@@ -406,7 +406,7 @@ li {
 }
 .hero__shape--1 {
   width: 200px;
-  height: 200px;
+  aspect-ratio: 1;
   top: 20%;
   right: 10%;
   -webkit-animation-delay: -2s;
@@ -414,7 +414,7 @@ li {
 }
 .hero__shape--2 {
   width: 150px;
-  height: 150px;
+  aspect-ratio: 1;
   top: 60%;
   left: 15%;
   -webkit-animation-delay: -4s;
@@ -422,7 +422,7 @@ li {
 }
 .hero__shape--3 {
   width: 100px;
-  height: 100px;
+  aspect-ratio: 1;
   top: 30%;
   left: 60%;
   -webkit-animation-delay: -1s;
@@ -1711,7 +1711,11 @@ li {
   border: 1px solid rgba(255,255,255,.1);
   border-radius: var(--radius-lg);
   color: var(--color-text-primary);
-  font-size: var(--font-size-lg)
+  font-size: var(--font-size-lg);
+  transition: all .2s
+}
+.search-box__input:hover {
+  border: 1px solid rgba(255,255,255,.18)
 }
 .search-box__button {
   position: absolute;
@@ -2242,6 +2246,10 @@ li {
   }
 }
 @media (max-width:61.99875em) {
+  .hero__shape--3 {
+    top: 20%;
+    left: 35%
+  }
   .feature-showcase__content--reverse .feature-showcase__text {
     order: 1
   }
@@ -2322,6 +2330,12 @@ li {
   .nav__link {
     font-size: 1.125rem
   }
+  .hero__shape--1 {
+    width: 160px
+  }
+  .hero__shape--2 {
+    width: 120px
+  }
 }
 @media (max-width:47.99875em)and (any-hover:none) {
   .icon-menu {
@@ -2334,6 +2348,11 @@ li {
   }
   .hero {
     padding: 130px 0 var(--spacing-3xl)
+  }
+  .hero__shape--3 {
+    width: 80px;
+    top: 15%;
+    left: 10%
   }
   .hero__description {
     margin-bottom: var(--spacing-xl)
