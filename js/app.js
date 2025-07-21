@@ -298,14 +298,20 @@
                     if (!isActive) {
                         item.classList.add("faq-item--active");
                         if (answer) {
-                            answer.style.maxHeight = answer.scrollHeight + "px";
-                            answer.style.padding = "var(--spacing-lg)";
+                            answer.style.maxHeight = answer.scrollHeight + 40 + "px";
+                            answer.style.paddingTop = "var(--spacing-lg)";
+                            answer.style.paddingBottom = "var(--spacing-lg)";
+                            answer.style.paddingLeft = "var(--spacing-lg)";
+                            answer.style.paddingRight = "var(--spacing-lg)";
                         }
                     } else {
                         item.classList.remove("faq-item--active");
                         if (answer) {
                             answer.style.maxHeight = "0";
-                            answer.style.padding = "0 var(--spacing-lg)";
+                            answer.style.paddingTop = "0";
+                            answer.style.paddingBottom = "0";
+                            answer.style.paddingLeft = "var(--spacing-lg)";
+                            answer.style.paddingRight = "var(--spacing-lg)";
                         }
                     }
                 }));
@@ -318,7 +324,10 @@
                 const answer = item.querySelector(".faq-item__answer");
                 if (answer) {
                     answer.style.maxHeight = "0";
-                    answer.style.padding = "0 var(--spacing-lg)";
+                    answer.style.paddingTop = "0";
+                    answer.style.paddingBottom = "0";
+                    answer.style.paddingLeft = "var(--spacing-lg)";
+                    answer.style.paddingRight = "var(--spacing-lg)";
                 }
             }));
         }
