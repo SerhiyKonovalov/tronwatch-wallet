@@ -130,71 +130,6 @@
                     }
                 }));
             }));
-            if (window.location.pathname.includes("index.html") || window.location.pathname === "/" || window.location.pathname === "") this.animateStatsCounters();
-        }
-        animateStatsCounters() {
-            const statsValues = document.querySelectorAll(".stats__value, .blockchain-metric__value, .ecosystem-stat__value, .dev-stat__number");
-            const observer = new IntersectionObserver((entries => {
-                entries.forEach((entry => {
-                    if (entry.isIntersecting) {
-                        this.countUp(entry.target);
-                        observer.unobserve(entry.target);
-                    }
-                }));
-            }));
-            statsValues.forEach((stat => observer.observe(stat)));
-        }
-        countUp(element) {
-            const target = element.getAttribute("data-target");
-            const text = element.textContent;
-            if (!target) {
-                if (text === "99.9%") this.animateNumber(element, 99.9, "%"); else if (text === "24/7") this.animateNumber(element, 24, "/7"); else if (text.includes("%")) {
-                    const number = parseFloat(text.replace("%", ""));
-                    this.animateNumber(element, number, "%");
-                } else if (text.includes("/")) {
-                    const parts = text.split("/");
-                    const number = parseFloat(parts[0]);
-                    this.animateNumber(element, number, "/" + parts[1]);
-                } else {
-                    const number = parseFloat(text.replace(/[^\d.]/g, ""));
-                    const suffix = text.replace(/[\d.]/g, "");
-                    this.animateNumber(element, number, suffix);
-                }
-                return;
-            }
-            const targetNumber = parseFloat(target);
-            const prefix = element.getAttribute("data-prefix") || "";
-            const suffix = element.getAttribute("data-suffix") || "";
-            const duration = 2e3;
-            const steps = 60;
-            const increment = targetNumber / steps;
-            let current = 0;
-            let step = 0;
-            const timer = setInterval((() => {
-                current += increment;
-                step++;
-                if (step >= steps) {
-                    current = targetNumber;
-                    clearInterval(timer);
-                }
-                if (suffix === "M+") element.textContent = (current / 1e6).toFixed(1) + suffix; else if (suffix === "B") element.textContent = prefix + current.toFixed(1) + suffix; else element.textContent = prefix + current.toFixed(0) + suffix;
-            }), duration / steps);
-        }
-        animateNumber(element, number, suffix) {
-            const duration = 2e3;
-            const steps = 60;
-            const increment = number / steps;
-            let current = 0;
-            let step = 0;
-            const timer = setInterval((() => {
-                current += increment;
-                step++;
-                if (step >= steps) {
-                    current = number;
-                    clearInterval(timer);
-                }
-                if (suffix.includes("M")) element.textContent = (current / 1e6).toFixed(1) + "M+"; else if (suffix.includes("B")) element.textContent = "$" + (current / 1e9).toFixed(1) + "B"; else if (suffix.includes("%")) element.textContent = current.toFixed(1) + "%"; else if (suffix.includes("$")) element.textContent = "$" + current.toFixed(3); else if (suffix.includes("+")) element.textContent = current.toFixed(0) + "+"; else if (suffix === "%") element.textContent = current.toFixed(1) + "%"; else if (suffix === "/7") element.textContent = Math.round(current) + "/7"; else element.textContent = current.toFixed(0) + suffix;
-            }), duration / steps);
         }
         setupFormValidation() {
             const forms = document.querySelectorAll("form");
@@ -279,7 +214,7 @@
             faqItems.forEach((item => {
                 const question = item.querySelector(".faq-item__question");
                 const answer = item.querySelector(".faq-item__answer");
-                question.addEventListener("click", (() => {
+                const toggleFAQ = () => {
                     const isActive = item.classList.contains("faq-item--active");
                     const currentSection = item.closest(".faq__section");
                     if (currentSection) {
@@ -313,6 +248,13 @@
                             answer.style.paddingLeft = "var(--spacing-lg)";
                             answer.style.paddingRight = "var(--spacing-lg)";
                         }
+                    }
+                };
+                if (question) question.addEventListener("click", toggleFAQ);
+                item.addEventListener("keydown", (e => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        toggleFAQ();
                     }
                 }));
             }));
