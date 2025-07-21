@@ -29,15 +29,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale
 }
-button,
-input,
-textarea {
-  font-family: Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
-  background-color: rgba(0,0,0,0)
-}
 label {
   display: inline-block
 }
@@ -56,15 +47,6 @@ ul li {
 }
 img {
   vertical-align: top
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: inherit;
-  font-size: inherit
 }
 .lock body {
   overflow: hidden;
@@ -141,7 +123,7 @@ h6 {
 :root {
   --color-primary: #e74c3c;
   --color-primary-dark: #c0392b;
-  --color-primary-light: #ec7063;
+  --color-primary-light: #f37d70;
   --color-secondary: #3498db;
   --color-secondary-dark: #2980b9;
   --color-success: #27ae60;
@@ -213,7 +195,7 @@ h4,
 h5,
 h6 {
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.3;
   margin-bottom: var(--spacing-md)
 }
 h1 {
@@ -311,7 +293,7 @@ li {
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 8px var(--spacing-lg)
+  gap: 10px var(--spacing-lg)
 }
 .nav__link {
   color: var(--color-text-secondary);
@@ -403,7 +385,7 @@ li {
 }
 .hero {
   position: relative;
-  padding: 120px 0 var(--spacing-3xl);
+  padding: 170px 0 100px;
   display: flex;
   align-items: center;
   background: var(--gradient-hero);
@@ -473,8 +455,7 @@ li {
   z-index: 1;
   text-align: center;
   max-width: 800px;
-  margin: 0 auto;
-  padding-top: 80px
+  margin: 0 auto
 }
 .hero__title {
   margin-bottom: var(--spacing-lg)
@@ -503,17 +484,18 @@ li {
 }
 .hero__actions {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: var(--spacing-md);
-  justify-content: center;
-  flex-wrap: wrap
+  justify-content: center
 }
 .page-hero {
-  padding: 120px 0 var(--spacing-3xl);
+  padding: 160px 0 100px;
   background: var(--gradient-hero);
   text-align: center
 }
 .page-hero__content {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto
 }
 .page-hero__title {
@@ -521,6 +503,8 @@ li {
   margin-bottom: var(--spacing-md)
 }
 .page-hero__description {
+  max-width: 500px;
+  margin: 0 auto;
   font-size: var(--font-size-lg);
   color: var(--color-text-secondary);
   margin-bottom: var(--spacing-xl)
@@ -738,7 +722,7 @@ li {
 }
 .section-header {
   text-align: center;
-  margin-bottom: var(--spacing-3xl)
+  margin-bottom: var(--spacing-2xl)
 }
 .section-header__title {
   font-size: var(--font-size-3xl);
@@ -1237,7 +1221,7 @@ li {
 }
 .download-btn--large {
   justify-content: center;
-  padding: var(--spacing-lg)
+  padding: var(--spacing-md)
 }
 .download-btn__icon {
   font-size: var(--font-size-xl)
@@ -1421,6 +1405,7 @@ li {
 }
 .developer-ecosystem__stats {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--spacing-lg);
   margin-bottom: var(--spacing-xl)
 }
@@ -1781,6 +1766,7 @@ li {
 }
 .faq-item__question {
   display: flex;
+  gap: 10px;
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing-lg);
@@ -1792,11 +1778,13 @@ li {
   background-color: var(--color-bg-tertiary)
 }
 .faq-item__question h3 {
-  margin: 0;
-  font-size: var(--font-size-lg)
+  font-size: var(--font-size-lg);
+  text-wrap: balance;
+  line-height: 1.5;
+  margin: 0
 }
 .faq-item__toggle {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-2xl);
   font-weight: 300;
   color: var(--color-primary);
   transition: -webkit-transform var(--transition-fast);
@@ -1829,7 +1817,7 @@ li {
 .contact-form__container {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: var(--spacing-3xl);
+  gap: var(--spacing-2xl);
   max-width: 1000px;
   margin: 0 auto
 }
@@ -1860,6 +1848,11 @@ li {
   font-family: inherit;
   transition: border-color var(--transition-fast)
 }
+.form__input:hover,
+.form__select:hover,
+.form__textarea:hover {
+  border: 1px solid rgba(255,255,255,.25)
+}
 .form__input:focus,
 .form__select:focus,
 .form__textarea:focus {
@@ -1868,7 +1861,8 @@ li {
 }
 .form__textarea {
   resize: vertical;
-  min-height: 120px
+  min-height: 120px;
+  max-height: 400px
 }
 .form__checkbox {
   display: flex;
@@ -2068,7 +2062,7 @@ li {
     padding: 0 var(--spacing-lg)
   }
   .hero__title-main {
-    font-size: var(--font-size-3xl)
+    font-size: 38px
   }
   .hero__title-sub {
     font-size: var(--font-size-xl)
@@ -2077,14 +2071,17 @@ li {
   .feature-showcase__content,
   .overview-intro__grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-xl)
+    gap: var(--spacing-2xl)
   }
   .contact-form__container {
     grid-template-columns: 1fr
   }
   .footer__content {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-lg)
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--spacing-xl) var(--spacing-lg)
+  }
+  .footer__section:first-child {
+    grid-column: span 3
   }
   .blockchain-stats__content,
   .developer-ecosystem__grid {
@@ -2110,10 +2107,6 @@ li {
   .requirements__grid {
     grid-template-columns: 1fr
   }
-  .footer__content {
-    grid-template-columns: 1fr;
-    text-align: center
-  }
 }
 @media (max-width:767.98px) {
   .nav__menu {
@@ -2124,7 +2117,7 @@ li {
     background-color: var(--color-bg-primary);
     border-top: 1px solid rgba(255,255,255,.1);
     flex-direction: column;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-xl) var(--spacing-lg);
     -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
     opacity: 0;
@@ -2139,10 +2132,6 @@ li {
   }
   .nav__toggle {
     display: flex
-  }
-  .hero__actions {
-    flex-direction: column;
-    align-items: center
   }
   .stats__grid {
     grid-template-columns: repeat(2,1fr)
@@ -2180,6 +2169,9 @@ li {
   .container {
     padding: 0 var(--spacing-md)
   }
+  .hero__title-main {
+    font-size: 28px
+  }
   .btn--small {
     padding: var(--spacing-xs) var(--spacing-sm);
     font-size: var(--font-size-xs)
@@ -2193,11 +2185,7 @@ li {
   .overview-intro__actions .btn {
     width: 100%
   }
-  .hero__content {
-    padding-top: 60px
-  }
   .hero__actions {
-    gap: var(--spacing-sm);
     flex-direction: column
   }
   .btn--large {
@@ -2226,7 +2214,6 @@ li {
     grid-template-columns: 1fr
   }
   .developer-ecosystem__stats {
-    flex-direction: column;
     align-items: center;
     gap: var(--spacing-md)
   }
@@ -2246,10 +2233,20 @@ li {
     flex-direction: column;
     width: 100%
   }
+  .footer__content {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg)
+  }
+  .footer__section:first-child {
+    grid-column: span 2
+  }
 }
 @media (max-width:61.99875em) {
-  .footer__social {
-    justify-content: center
+  .feature-showcase__content--reverse .feature-showcase__text {
+    order: 1
+  }
+  .feature-showcase__content--reverse .feature-showcase__image {
+    order: 2
   }
 }
 @media (max-width:47.99875em) {
@@ -2322,6 +2319,9 @@ li {
   .nav__brand {
     flex: 1 1 100%
   }
+  .nav__link {
+    font-size: 1.125rem
+  }
 }
 @media (max-width:47.99875em)and (any-hover:none) {
   .icon-menu {
@@ -2332,12 +2332,30 @@ li {
   .nav {
     gap: .625rem
   }
+  .hero {
+    padding: 130px 0 var(--spacing-3xl)
+  }
+  .hero__description {
+    margin-bottom: var(--spacing-xl)
+  }
+  .page-hero {
+    padding: 130px 0 var(--spacing-3xl)
+  }
   .docs-nav-item {
     width: 100%;
     justify-content: center
   }
+  .stats {
+    padding: var(--spacing-xl) 0
+  }
+  .stats__grid {
+    gap: var(--spacing-sm)
+  }
   .key-feature__icon {
     margin-inline: auto
+  }
+  .download-option {
+    padding: var(--spacing-md)
   }
   .installation-step__number {
     margin-inline: auto
@@ -2348,8 +2366,19 @@ li {
   .doc-nav__item {
     padding: var(--spacing-sm) 12px
   }
+  .faq-item__question h3 {
+    font-size: 16px
+  }
   .contact-form__form {
     padding: var(--spacing-xl) var(--spacing-md)
+  }
+  .form__input,
+  .form__select,
+  .form__textarea {
+    padding: 14px!important
+  }
+  .footer {
+    padding: var(--spacing-2xl) 0 var(--spacing-lg)
   }
 }
 @media (max-width:23.43625em) {
