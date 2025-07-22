@@ -506,7 +506,7 @@ li:not(:last-child) {
   justify-content: center
 }
 .page-hero {
-  padding: 160px 0 100px;
+  padding: 180px 0 120px;
   background: var(--gradient-hero);
   text-align: center
 }
@@ -522,7 +522,9 @@ li:not(:last-child) {
   max-width: 500px;
   margin: 0 auto;
   font-size: var(--font-size-lg);
-  color: var(--color-text-secondary);
+  color: var(--color-text-secondary)
+}
+.page-hero__description:not(:last-child) {
   margin-bottom: var(--spacing-xl)
 }
 .page-hero__features {
@@ -2017,7 +2019,8 @@ li:not(:last-child) {
 .cta__description {
   font-size: var(--font-size-lg);
   color: var(--color-text-secondary);
-  margin-bottom: var(--spacing-xl)
+  margin-bottom: var(--spacing-xl);
+  text-wrap: pretty
 }
 .cta__actions {
   display: flex;
@@ -2382,6 +2385,9 @@ li:not(:last-child) {
   }
   .page-hero {
     padding: 130px 0 var(--spacing-3xl)
+  }
+  .page-hero__description:not(:last-child) {
+    margin-bottom: var(--spacing-lg)
   }
   .docs-nav-item {
     width: 100%;
