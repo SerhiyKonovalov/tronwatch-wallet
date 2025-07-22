@@ -217,8 +217,10 @@ h6 {
   font-size: var(--font-size-base)
 }
 p {
-  margin-bottom: var(--spacing-md);
   color: var(--color-text-secondary)
+}
+p:not(:last-child) {
+  margin-bottom: var(--spacing-md)
 }
 a {
   color: var(--color-primary);
@@ -230,12 +232,17 @@ a:hover {
 }
 ol,
 ul {
-  margin-bottom: var(--spacing-md);
   padding-left: var(--spacing-lg)
 }
+ol:not(:last-child),
+ul:not(:last-child) {
+  margin-bottom: var(--spacing-md)
+}
 li {
-  margin-bottom: var(--spacing-xs);
   color: var(--color-text-secondary)
+}
+li:not(:last-child) {
+  margin-bottom: var(--spacing-xs)
 }
 .container {
   max-width: 1200px;
@@ -2374,7 +2381,11 @@ li {
     margin-inline: auto
   }
   .download-option {
-    padding: var(--spacing-md)
+    padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md) var(--spacing-md)
+  }
+  .download-option__icon svg {
+    width: 3.4375rem;
+    height: 3.4375rem
   }
   .installation-step__number {
     margin-inline: auto
