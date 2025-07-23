@@ -7,7 +7,7 @@
 	<meta name="format-detection" content="telephone=no">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="SiteUrl.com">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250722201402">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250723231401">
 	<link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="favicon.ico">
 	<link rel="icon" type="image/webp" sizes="16x16" href="img/favicons/16x16.webp">
 	<link rel="icon" type="image/webp" sizes="32x32" href="img/favicons/32x32.webp">
@@ -45,25 +45,36 @@
 						</a>
 					</div>
 
-					<ul class="nav__menu" id="navMenu">
-						<li class="nav__item">
-							<a href="home.html" class="nav__link nav__link--active">Home</a>
-						</li>
-						<li class="nav__item">
-							<a href="overview.html" class="nav__link">Overview</a>
-						</li>
-						<li class="nav__item">
-							<a href="ecosystem.html" class="nav__link">Ecosystem</a>
-						</li>
-						<li class="nav__item">
-							<a href="documentation.html" class="nav__link">Documentation</a>
-						</li>
-						<li class="nav__item">
-							<a href="help-center.html" class="nav__link">Help Center</a>
-						</li>
-					</ul>
-
+					<div class="nav__menu" id="navMenu">
+						<ul class="nav__list">
+							<li class="nav__item">
+								<a href="home.html" class="nav__link nav__link--active">Home</a>
+							</li>
+							<li class="nav__item">
+								<a href="overview.html" class="nav__link">Overview</a>
+							</li>
+							<li class="nav__item">
+								<a href="ecosystem.html" class="nav__link">Ecosystem</a>
+							</li>
+							<li class="nav__item">
+								<a href="documentation.html" class="nav__link">Documentation</a>
+							</li>
+							<li class="nav__item">
+								<a href="help-center.html" class="nav__link">Help Center</a>
+							</li>
+						</ul>
+					</div>
 					<div class="nav__actions">
+						<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" data-da=".nav__menu,369.98,2">
+							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="theme-icon theme-icon--sun">
+								<circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="2" />
+								<path d="M10 2V4M10 16V18M18 10H16M4 10H2M15.314 4.686L13.9 6.1M6.1 13.9L4.686 15.314M15.314 15.314L13.9 13.9M6.1 6.1L4.686 4.686" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+							</svg>
+							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="theme-icon theme-icon--moon" style="display: none;">
+								<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="2" />
+							</svg>
+						</button>
+
 						<a href="download.html" class="nav__button btn btn--primary ">Download <span>Wallet</span></a>
 					</div>
 
@@ -347,19 +358,19 @@
 			<div class="container">
 				<div class="footer__content">
 					<div class="footer__section">
-						<h3 class="footer__title">TronWatch</h3>
+						<h3 class="footer__title"><a href="home.html">TronWatch</a></h3>
 						<p class="footer__description">
 							The most secure and user-friendly cryptocurrency wallet for the TRON ecosystem.
 						</p>
 						<div class="footer__social">
 							<a href="https://x.com/tronwatch" class="footer__social-link" aria-label="Twitter">
 								<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-									<path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" fill="currentColor" />
+									<path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
 								</svg>
 							</a>
 							<a href="https://t.me/TronWatch" class="footer__social-link" aria-label="Telegram">
 								<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-									<path d="M10 0C4.477 0 0 4.477 0 10s4.477 10 10 10 10-4.477 10-10S15.523 0 10 0zm4.987 6.79l-1.731 8.157c-.13.578-.472.72-.956.448l-2.64-1.946-1.274 1.227c-.141.141-.26.26-.533.26l.19-2.694 4.906-4.432c.213-.19-.046-.295-.331-.105L7.26 10.846l-2.61-.816c-.567-.177-.578-.567.119-.84l10.197-3.931c.472-.177.886.105.731.84z" fill="currentColor" />
+									<path d="M10 0C4.477 0 0 4.477 0 10s4.477 10 10 10 10-4.477 10-10S15.523 0 10 0zm4.987 6.79l-1.731 8.157c-.13.578-.472.72-.956.448l-2.64-1.946-1.274 1.227c-.141.141-.26.26-.533.26l.19-2.694 4.906-4.432c.213-.19-.046-.295-.331-.105L7.26 10.846l-2.61-.816c-.567-.177-.578-.567.119-.84l10.197-3.931c.472-.177.886.105.731.84z" />
 								</svg>
 							</a>
 							<a href="https://www.instagram.com/tronwatch/" class="footer__social-link" aria-label="Instagram">
@@ -415,7 +426,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250722201402"></script>
+	<script src="js/app.min.js?_v=20250723231401"></script>
 </body>
 
 </html>
