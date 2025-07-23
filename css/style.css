@@ -54,6 +54,40 @@ img {
   -ms-scroll-chaining: none;
   overscroll-behavior: none
 }
+body::selection {
+  color: #fff;
+  background: rgba(243,125,112,.5)
+}
+[data-theme=light] body::selection {
+  color: #000
+}
+body::-moz-selection {
+  color: #fff;
+  background: rgba(243,125,112,.5)
+}
+[data-theme=light] body::-moz-selection {
+  color: #000
+}
+body::-webkit-scrollbar {
+  width: .625rem
+}
+body::-webkit-scrollbar-track {
+  background: linear-gradient(90deg,#272727 0,#161616 100%)
+}
+[data-theme=light] body::-webkit-scrollbar-track {
+  background: linear-gradient(90deg,#c9c8c8 0,#e2e2e2 100%)
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: .625rem;
+  border: .125rem solid #1c1d42
+}
+[data-theme=light] body::-webkit-scrollbar-thumb {
+  border: .125rem solid #e2e2e2
+}
+body::-webkit-scrollbar-thumb:hover {
+  border: .1875rem solid transparent
+}
 .wrapper {
   min-height: 100%;
   display: flex;
@@ -171,10 +205,55 @@ img {
   --z-popover: 1050;
   --z-tooltip: 1060
 }
+[data-theme=light] {
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-bg-tertiary: #e9ecef;
+  --color-bg-quaternary: #dee2e6;
+  --color-text-primary: rgba(0, 0, 0, 0.8);
+  --color-text-secondary: rgba(0, 0, 0, 0.6);
+  --color-text-tertiary: rgba(0, 0, 0, 0.45);
+  --color-text-muted: rgba(0, 0, 0, 0.3);
+  --color-border-primary: rgba(0, 0, 0, 0.1);
+  --color-border-secondary: rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.15),0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.15),0 4px 6px -2px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.15),0 10px 10px -5px rgba(0, 0, 0, 0.08);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+  --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  --gradient-hero: linear-gradient(135deg, #f8f3f3 0%, #ffffff 50%, #f8f3f3 100%)
+}
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast)
+}
+[data-theme=dark] .theme-toggle {
+  border: 1px solid rgba(255,255,255,.2)
+}
+.theme-toggle:hover {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05)
+}
+.theme-icon {
+  transition: opacity var(--transition-fast)
+}
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box
+  box-sizing: border-box;
+  transition: background-color var(--transition-fast),color var(--transition-fast),border-color var(--transition-fast)
 }
 html {
   scroll-behavior: smooth
@@ -256,8 +335,8 @@ li:not(:last-child) {
   flex: 1
 }
 .header {
-  background-color: rgba(10,10,10,.95);
-  backdrop-filter: blur(10px);
+  background-color: rgba(10,10,10,.03);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,.1);
   position: fixed;
   top: 0;
@@ -291,14 +370,16 @@ li:not(:last-child) {
   -webkit-text-fill-color: transparent;
   background-clip: text
 }
-.nav__menu {
+.nav__list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
-  margin: 0!important;
   padding: 0;
   gap: 10px var(--spacing-lg)
+}
+.nav__list:not(:last-child) {
+  margin-bottom: 20px
 }
 .nav__link {
   color: var(--color-text-secondary);
@@ -375,9 +456,15 @@ li:not(:last-child) {
   color: var(--color-text-primary);
   border: 1px solid rgba(255,255,255,.2)
 }
+[data-theme=light] .btn--secondary {
+  border: 1px solid rgba(0,0,0,.15)
+}
 .btn--secondary:hover {
   background-color: rgba(255,255,255,.1);
   color: var(--color-text-primary)
+}
+[data-theme=light] .btn--secondary:hover {
+  background-color: rgba(0,0,0,.07)
 }
 .btn--small {
   padding: var(--spacing-xs) var(--spacing-md);
@@ -493,7 +580,7 @@ li:not(:last-child) {
 }
 .hero__description {
   font-size: var(--font-size-lg);
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: 40px;
   color: var(--color-text-secondary)
 }
 .hero__actions {
@@ -609,10 +696,17 @@ li:not(:last-child) {
   font-weight: 500;
   transition: all var(--transition-fast)
 }
+[data-theme=light] .docs-nav-item {
+  background-color: rgba(0,0,0,.02);
+  border: 1px solid rgba(0,0,0,.07)
+}
 .docs-nav-item:hover {
   background-color: rgba(255,255,255,.1);
   color: var(--color-text-primary);
   border-color: var(--color-primary)
+}
+[data-theme=light] .docs-nav-item:hover {
+  background-color: rgba(0,0,0,.04)
 }
 .docs-nav-item svg {
   color: var(--color-primary)
@@ -1517,9 +1611,15 @@ li:not(:last-child) {
   color: var(--color-text-secondary);
   transition: all var(--transition-fast)
 }
+[data-theme=light] .footer__social-link {
+  border: 1px solid var(--color-border-secondary)
+}
 .footer__social-link svg {
   fill: #b0b0b0;
   transition: all var(--transition-fast)
+}
+[data-theme=light] .footer__social-link svg {
+  fill: #8f8f8f
 }
 .footer__social-link:hover {
   color: var(--color-primary);
@@ -1733,6 +1833,9 @@ li:not(:last-child) {
 .search-box__input:hover {
   border: 1px solid rgba(255,255,255,.18)
 }
+[data-theme=light] .search-box__input:hover {
+  border: 1px solid var(--color-border-primary)
+}
 .search-box__button {
   position: absolute;
   right: var(--spacing-md);
@@ -1766,11 +1869,18 @@ li:not(:last-child) {
   white-space: nowrap;
   transition: all var(--transition-fast)
 }
+[data-theme=light] .faq__category {
+  border: 1px solid var(--color-border-secondary)
+}
 .faq__category--active,
 .faq__category:hover {
   color: var(--color-text-primary);
   border-color: var(--color-primary);
   background-color: rgba(231,76,60,.1)
+}
+[data-theme=light] .faq__category--active,
+[data-theme=light] .faq__category:hover {
+  border-color: var(--color-primary)
 }
 .faq__section {
   display: none
@@ -1783,6 +1893,9 @@ li:not(:last-child) {
   border-radius: var(--radius-lg);
   margin-bottom: var(--spacing-md);
   overflow: hidden
+}
+[data-theme=light] .faq-item {
+  border: 1px solid var(--color-border-secondary)
 }
 .faq-item__question {
   display: flex;
@@ -1868,10 +1981,20 @@ li:not(:last-child) {
   font-family: inherit;
   transition: border-color var(--transition-fast)
 }
+[data-theme=light] .form__input,
+[data-theme=light] .form__select,
+[data-theme=light] .form__textarea {
+  border: 1px solid var(--color-border-secondary)
+}
 .form__input:hover,
 .form__select:hover,
 .form__textarea:hover {
   border: 1px solid rgba(255,255,255,.25)
+}
+[data-theme=light] .form__input:hover,
+[data-theme=light] .form__select:hover,
+[data-theme=light] .form__textarea:hover {
+  border: 1px solid var(--color-border-primary)
 }
 .form__input:focus,
 .form__select:focus,
@@ -2142,14 +2265,19 @@ li:not(:last-child) {
     left: 0;
     right: 0;
     background-color: var(--color-bg-primary);
-    border-top: 1px solid rgba(255,255,255,.1);
+    border-block: 1px solid rgba(255,255,255,.1);
     flex-direction: column;
-    padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-xl) var(--spacing-lg);
+    padding: var(--spacing-lg);
     -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
-    transition: all var(--transition-base)
+    transition: all var(--transition-base);
+    overflow: auto
+  }
+  [data-theme=light] .nav__menu {
+    background-color: #f1f0f0;
+    border-block: 1px solid rgba(0,0,0,.07)
   }
   .nav__menu--active {
     -webkit-transform: translateY(0);
@@ -2350,6 +2478,9 @@ li:not(:last-child) {
   .nav__brand {
     flex: 1 1 100%
   }
+  .nav__list {
+    flex-direction: column
+  }
   .nav__link {
     font-size: 1.125rem
   }
@@ -2368,6 +2499,9 @@ li:not(:last-child) {
 @media (max-width:29.99875em) {
   .nav {
     gap: .625rem
+  }
+  .nav__actions {
+    gap: 12px
   }
   .hero {
     padding: 130px 0 var(--spacing-3xl)
@@ -2433,7 +2567,7 @@ li:not(:last-child) {
     padding: var(--spacing-2xl) 0 var(--spacing-lg)
   }
 }
-@media (max-width:23.43625em) {
+@media (max-width:26.24875em) {
   .nav__button span {
     display: none
   }
