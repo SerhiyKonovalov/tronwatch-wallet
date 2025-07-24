@@ -978,7 +978,6 @@ li:not(:last-child) {
 }
 .overview-intro__image img {
   width: 100%;
-  height: 400px;
   -o-object-fit: cover;
   object-fit: cover;
   border-radius: var(--radius-lg);
@@ -1404,7 +1403,6 @@ li:not(:last-child) {
 }
 .feature-showcase__image img {
   width: 100%;
-  height: 400px;
   -o-object-fit: cover;
   object-fit: cover;
   border-radius: var(--radius-lg);
@@ -2207,6 +2205,12 @@ li:not(:last-child) {
     max-width: 600px;
     margin: 0 auto
   }
+  .overview-intro__image img {
+    height: 450px
+  }
+  .feature-showcase__image img {
+    height: 480px
+  }
 }
 @media (max-width:991.98px) {
   .hero__title-main {
@@ -2242,12 +2246,6 @@ li:not(:last-child) {
   .wallet-interface__showcase {
     grid-template-columns: 1fr;
     gap: var(--spacing-xl)
-  }
-  .feature-showcase__image img {
-    height: 300px
-  }
-  .overview-intro__image img {
-    height: 300px
   }
   .requirements__grid {
     grid-template-columns: 1fr
