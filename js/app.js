@@ -205,7 +205,7 @@
             let lastScrollTop = 0;
             window.addEventListener("scroll", (() => {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                if (scrollTop > 50) header.style.backgroundColor = "rgba(10, 10, 10, 0.12)"; else header.style.backgroundColor = "rgba(10, 10, 10, 0.03)";
+                if (scrollTop > 50) header.style.backgroundColor = "rgba(10, 10, 10, 0.08)"; else header.style.backgroundColor = "rgba(10, 10, 10, 0.03)";
                 lastScrollTop = scrollTop;
             }));
             const anchorLinks = document.querySelectorAll('a[href^="#"]');
