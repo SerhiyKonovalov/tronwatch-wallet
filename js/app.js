@@ -146,7 +146,7 @@
         }
         setupThemeToggle() {
             const themeToggle = document.getElementById("themeToggle");
-            const currentTheme = localStorage.getItem("theme") || "dark";
+            const currentTheme = localStorage.getItem("theme") || "light";
             document.documentElement.setAttribute("data-theme", currentTheme);
             this.updateThemeIcon(currentTheme);
             if (themeToggle) themeToggle.addEventListener("click", (() => {
