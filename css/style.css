@@ -390,6 +390,10 @@ li:not(:last-child) {
 .nav__link:hover {
   color: var(--color-text-primary)
 }
+[data-theme=light] .nav__link--active,
+[data-theme=light] .nav__link:hover {
+  color: #000
+}
 .nav__link--active::after {
   content: "";
   position: absolute;
@@ -830,6 +834,7 @@ li:not(:last-child) {
   color: var(--color-text-secondary)
 }
 .section-header {
+  text-align: center;
   margin-bottom: var(--spacing-xl)
 }
 .section-header__title {
@@ -1829,14 +1834,19 @@ li:not(:last-child) {
 }
 .search-box__button {
   position: absolute;
-  right: var(--spacing-md);
+  right: var(--spacing-sm);
   top: 50%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   background: 0 0;
   border: none;
+  padding: 10px;
   color: var(--color-text-muted);
-  cursor: pointer
+  cursor: pointer;
+  transition: all .2s
+}
+.search-box__button:hover {
+  color: var(--color-text-secondary)
 }
 .faq {
   padding: var(--spacing-3xl) 0
@@ -2200,11 +2210,12 @@ li:not(:last-child) {
   color: var(--color-text-muted);
   margin: 0
 }
-@media (min-width:61.99875em) {
+@media (min-width:47.99875em) {
   .section-header {
-    margin-bottom: var(--spacing-2xl);
-    text-align: center
+    margin-bottom: var(--spacing-2xl)
   }
+}
+@media (min-width:61.99875em) {
   .section-header__subtitle {
     max-width: 600px;
     margin: 0 auto
@@ -2486,6 +2497,15 @@ li:not(:last-child) {
   }
   .hero__shape--2 {
     width: 120px
+  }
+  .feature-card {
+    text-align: center
+  }
+  .key-features__grid {
+    gap: var(--spacing-xl)
+  }
+  .key-feature {
+    gap: var(--spacing-md)
   }
 }
 @media (max-width:47.99875em)and (any-hover:none) {
