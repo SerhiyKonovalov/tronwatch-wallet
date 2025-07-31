@@ -1813,7 +1813,7 @@ li:not(:last-child) {
   padding: var(--spacing-md);
   background-color: var(--color-bg-primary);
   border-radius: var(--radius-md);
-  margin: var(--spacing-sm) 0
+  margin: var(--spacing-md) 0
 }
 .api-endpoint__method {
   background-color: var(--color-success);
