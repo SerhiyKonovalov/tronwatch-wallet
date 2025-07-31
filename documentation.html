@@ -7,7 +7,10 @@
 	<meta name="format-detection" content="telephone=no">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="tronwatch-wallet.com">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250727205037">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap&_v=20250731114958" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250731114958">
 	<link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="favicon.ico">
 	<link rel="icon" type="image/webp" sizes="16x16" href="img/favicons/16x16.webp">
 	<link rel="icon" type="image/webp" sizes="32x32" href="img/favicons/32x32.webp">
@@ -151,8 +154,10 @@
 									<li>Download the installer</li>
 									<li>Run the installer and follow the setup wizard</li>
 								</ol>
+								<div class="doc-note doc-note--blue">
+									<strong>Note:</strong> On macOS and Linux, you may need to grant execution permissions to the installer manually.
+								</div>
 							</div>
-
 							<div class="doc-article">
 								<h3>Creating Your First Wallet</h3>
 								<p>Setting up a new wallet is simple and secure:</p>
@@ -178,6 +183,45 @@
 									<li>Set a new password for this device</li>
 									<li>Wait for wallet synchronization to complete</li>
 								</ol>
+								<p>You can import wallets created in TronLink, Klever, Trust Wallet, and other TRON-compatible apps.</p>
+							</div>
+
+							<div class="doc-article">
+								<h3>Verifying Wallet Integrity</h3>
+								<p>Before using your wallet:</p>
+								<ul>
+									<li>Make a small test transaction to verify full functionality</li>
+									<li>Check address format: all TRON addresses start with T</li>
+									<li>View your address in a TRON blockchain explorer (e.g., TRONSCAN)</li>
+								</ul>
+								<p></p>
+							</div>
+
+							<div class="doc-article">
+								<h3>Enabling Local Security Settings</h3>
+								<p>
+									TronWatch Wallet offers several optional security settings:
+								</p>
+								<ul>
+									<li>Auto-lock timeout after inactivity</li>
+									<li>Password required for sending transactions</li>
+									<li>Read-only mode for portfolio viewing</li>
+									<li>Encrypted local storage for private keys</li>
+								</ul>
+								<p>
+									You can configure these in the Settings tab after wallet creation or import.
+								</p>
+							</div>
+
+							<div class="doc-article">
+								<h3>Switching Between Wallets</h3>
+								<p>If you manage multiple wallets:</p>
+								<ul>
+									<li>Open the wallet switcher from the top-right menu</li>
+									<li>Add new or import additional wallets</li>
+									<li>Each wallet is isolated and encrypted separately</li>
+								</ul>
+								<p>You can name your wallets for easier identification.</p>
 							</div>
 						</div>
 
@@ -193,6 +237,7 @@
 									<li><strong>TRC-10 Tokens:</strong> Browse and add from the token list</li>
 									<li><strong>NFTs:</strong> Automatically detected and displayed</li>
 								</ul>
+								<p>To add a custom token manually, go to Assets → Add Token, and paste the correct contract address.</p>
 							</div>
 
 							<div class="doc-article">
@@ -205,6 +250,7 @@
 									<li>Profit/loss calculations</li>
 									<li>Transaction history</li>
 								</ul>
+								<p>Use the Analytics tab for deeper insights and visualizations.</p>
 							</div>
 
 							<div class="doc-article">
@@ -215,6 +261,29 @@
 									<li>Select "Add Wallet"</li>
 									<li>Choose to create new or import existing</li>
 									<li>Switch between wallets using the dropdown</li>
+								</ol>
+								<p>You can rename wallets for clarity and assign color labels.</p>
+							</div>
+
+							<div class="doc-article">
+								<h3>Backing Up Wallets</h3>
+								<p>To avoid losing access, ensure each wallet is properly backed up:</p>
+								<ol>
+									<li>Go to Wallet Settings → Backup</li>
+									<li>Write down or export your recovery phrase</li>
+									<li>For imported wallets, verify the phrase or private key is accessible</li>
+									<li>Use encrypted local backups for convenience</li>
+								</ol>
+							</div>
+
+							<div class="doc-article">
+								<h3>Renaming and Removing Wallets</h3>
+								<p>Manage your wallets via the Wallet Manager:</p>
+								<ol>
+									<li>Rename a wallet: click Edit next to the wallet name</li>
+									<li>Remove a wallet: select it and choose Remove Wallet</li>
+									<li>Removing a wallet does not delete funds — it just clears local storage</li>
+									<li>You can always re-import using the recovery phrase</li>
 								</ol>
 							</div>
 						</div>
@@ -233,6 +302,7 @@
 									<li>Review transaction details</li>
 									<li>Confirm and sign the transaction</li>
 								</ol>
+								<p>For large transfers, enable manual fee settings to adjust bandwidth and energy usage.</p>
 							</div>
 
 							<div class="doc-article">
@@ -244,6 +314,7 @@
 									<li>Copy your wallet address or QR code</li>
 									<li>Share with the sender</li>
 								</ol>
+								<p>Wallets can receive funds even when the app is offline. Incoming transactions appear after the next sync.</p>
 							</div>
 
 							<div class="doc-article">
@@ -255,6 +326,27 @@
 									<li><strong>Fee Options:</strong> Freeze TRX or pay with TRX</li>
 									<li><strong>Optimization:</strong> Automatic fee calculation</li>
 								</ul>
+								<p>To reduce fees, you can freeze TRX in Settings → Resources and earn free bandwidth/energy.</p>
+							</div>
+
+							<div class="doc-article">
+								<h3>Transaction History</h3>
+								<p>Track and verify past activity:</p>
+								<ol>
+									<li>Full list of sent, received, and failed transactions</li>
+									<li>Search and filter by date, asset, status, or address</li>
+									<li>Export history to CSV for audits or personal records</li>
+									<li>Tap any transaction to see detailed metadata (hash, block number, resources used)</li>
+								</ol>
+							</div>
+
+							<div class="doc-article">
+								<h3>Memo and Notes</h3>
+								<ol>
+									<li>Some exchanges or services require a memo or destination tag</li>
+									<li>TronWatch prompts for this when needed and warns if missing</li>
+									<li>You can also add internal notes to transactions for bookkeeping</li>
+								</ol>
 							</div>
 						</div>
 
@@ -270,6 +362,7 @@
 									<li>Optional 2FA authentication</li>
 									<li>Regular security audits</li>
 								</ul>
+								<p>All keys are stored locally—they never leave your device or touch external servers.</p>
 							</div>
 
 							<div class="doc-article">
@@ -283,6 +376,7 @@
 									<li>Verify transaction details carefully</li>
 									<li>Only download from official sources</li>
 								</ul>
+								<p>You are your own security perimeter—never assume third-party services are safe.</p>
 							</div>
 
 							<div class="doc-article">
@@ -295,6 +389,19 @@
 									<li>Never store recovery phrase digitally</li>
 									<li>Consider using metal backup plates</li>
 								</ol>
+							</div>
+
+							<div class="doc-article">
+								<h3>Advanced Settings and Controls</h3>
+								<p>Power users can further customize their security:</p>
+								<ol>
+									<li>Manual resource control: fine-tune fee consumption and signing behavior</li>
+									<li>Hardware wallet integration (planned): future support for external key storage</li>
+									<li>Custom node support: connect to your own TRON full node for private access</li>
+									<li>Session management: see active devices and sessions for your wallet instance</li>
+									<li>These features are optional but recommended for advanced users or high-value wallets.</li>
+								</ol>
+								<p>These features are optional but recommended for advanced users or high-value wallets.</p>
 							</div>
 						</div>
 
@@ -310,6 +417,7 @@
 									<li><strong>Rate Limits:</strong> 1000 requests per hour</li>
 									<li><strong>Response Format:</strong> JSON</li>
 								</ul>
+								<p>All requests must be made over HTTPS. Requests over HTTP will be rejected.</p>
 							</div>
 
 							<div class="doc-article">
@@ -319,6 +427,11 @@
 									<pre><code>curl -H "Authorization: Bearer YOUR_API_KEY" \
   https://api.tronwatch.app/v1/balance/TRX_ADDRESS</code></pre>
 								</div>
+								<ul>
+									<li>API keys are generated from <a href="https://www.trongrid.io" target="_blank">TronGrid</a></li>
+									<li>Keep your API key private. Do not expose it in frontend code</li>
+									<li>Contact support to rotate your key if compromised</li>
+								</ul>
 							</div>
 
 							<div class="doc-article">
@@ -328,15 +441,65 @@
 									<div class="api-endpoint__path">/balance/{address}</div>
 									<div class="api-endpoint__description">Get wallet balance</div>
 								</div>
+								<div class="code-block">
+									<pre><code>{
+  "address": "TDx7Ab...9KJ",
+  "balances": {
+    "TRX": "1324.45",
+    "USDT": "250.00",
+    "NFT": 3
+  }
+}</code></pre>
+								</div>
 								<div class="api-endpoint">
 									<div class="api-endpoint__method">GET</div>
 									<div class="api-endpoint__path">/transactions/{address}</div>
 									<div class="api-endpoint__description">Get transaction history</div>
 								</div>
+								<div class="code-block">
+									<pre><code>curl https://api.tronwatch.app/v1/transactions/TDx7Ab...9KJ?limit=10&type=TRC20</code></pre>
+								</div>
 								<div class="api-endpoint">
 									<div class="api-endpoint__method">POST</div>
 									<div class="api-endpoint__path">/send</div>
 									<div class="api-endpoint__description">Send transaction</div>
+								</div>
+								<div class="code-block">
+									<pre><code>{
+  "from": "TDx7Ab...9KJ",
+  "to": "TEe1Xp...M32",
+  "amount": "100.0",
+  "token": "USDT",
+  "privateKey": "PRIVATE_KEY"
+}</code></pre>
+								</div>
+								<div class="doc-note doc-note--blue">
+									<strong>Note:</strong> The API does not store or log private keys. This call should only be used in trusted backend environments.
+								</div>
+							</div>
+
+
+							<div class="doc-article">
+								<h3>Advanced Endpoints</h3>
+								<div class="api-endpoint">
+									<div class="api-endpoint__method">GET</div>
+									<div class="api-endpoint__path">/resources/{address}</div>
+									<div class="api-endpoint__description">Returns current bandwidth and energy levels.</div>
+								</div>
+								<div class="api-endpoint">
+									<div class="api-endpoint__method">GET</div>
+									<div class="api-endpoint__path">/tokens/{contract_address}</div>
+									<div class="api-endpoint__description">Retrieves metadata about a TRC-20 or TRC-10 token.</div>
+								</div>
+								<div class="api-endpoint">
+									<div class="api-endpoint__method">GET</div>
+									<div class="api-endpoint__path">/nfts/{address}</div>
+									<div class="api-endpoint__description">Fetches NFTs held by a wallet, including collection name, token ID, and image URL.</div>
+								</div>
+								<div class="api-endpoint">
+									<div class="api-endpoint__method">GET</div>
+									<div class="api-endpoint__path">/status</div>
+									<div class="api-endpoint__description">Checks API health and synchronization status with the TRON blockchain.</div>
 								</div>
 							</div>
 						</div>
@@ -431,7 +594,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250727205037"></script>
+	<script src="js/app.min.js?_v=20250731114958"></script>
 </body>
 
 </html>
