@@ -9,8 +9,8 @@
 	<meta name="author" content="tronwatch-wallet.com">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap&_v=20250731183037" rel="stylesheet">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250731183037">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap&_v=20250731190326" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250731190326">
 	<link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="favicon.ico">
 	<link rel="icon" type="image/webp" sizes="16x16" href="img/favicons/16x16.webp">
 	<link rel="icon" type="image/webp" sizes="32x32" href="img/favicons/32x32.webp">
@@ -413,24 +413,25 @@
 								<p>TronWatch provides a comprehensive REST API for developers:</p>
 								<ul>
 									<li><strong>Base URL:</strong> https://api.tronwatch.app/v1</li>
-									<li><strong>Authentication:</strong> API key required</li>
-									<li><strong>Rate Limits:</strong> 1000 requests per hour</li>
-									<li><strong>Response Format:</strong> JSON</li>
+									<li><strong>Authentication:</strong> Bearer API Key (required for all endpoints)</li>
+									<li><strong>Rate Limits:</strong> 1000 requests/hour per API key</li>
+									<li><strong>Response Format:</strong> All responses are returned in <code>application/json</code></li>
 								</ul>
-								<p>All requests must be made over HTTPS. Requests over HTTP will be rejected.</p>
+								<p>All requests must be made over HTTPS. HTTP connections are rejected.</p>
 							</div>
 
 							<div class="doc-article">
 								<h3>Authentication</h3>
-								<p>All API requests require authentication:</p>
+								<p>To use the TronWatch API, you must authenticate every request with your personal API key.</p>
+								<p>Example (cURL):</p>
 								<div class="code-block">
 									<pre><code>curl -H "Authorization: Bearer YOUR_API_KEY" \
-  https://api.tronwatch.app/v1/balance/TRX_ADDRESS</code></pre>
+     https://api.tronwatch.app/v1/balance/TDx7Ab...9KJ</code></pre>
 								</div>
 								<ul>
-									<li>API keys are generated from <a href="https://www.trongrid.io" target="_blank">TronGrid</a></li>
-									<li>Keep your API key private. Do not expose it in frontend code</li>
-									<li>Contact support to rotate your key if compromised</li>
+									<li>API keys are issued via the <a href="https://www.trongrid.io" target="_blank">TronGrid</a></li>
+									<li>Do not expose API keys in frontend code</li>
+									<li>Contact support to rotate compromised keys</li>
 								</ul>
 							</div>
 
@@ -439,7 +440,7 @@
 								<div class="api-endpoint">
 									<div class="api-endpoint__method">GET</div>
 									<div class="api-endpoint__path">/balance/{address}</div>
-									<div class="api-endpoint__description">Get wallet balance</div>
+									<div class="api-endpoint__description">Returns TRX and token balances for a wallet address.</div>
 								</div>
 								<div class="code-block">
 									<pre><code>{
@@ -455,16 +456,36 @@
 								<div class="api-endpoint">
 									<div class="api-endpoint__method">GET</div>
 									<div class="api-endpoint__path">/transactions/{address}</div>
-									<div class="api-endpoint__description">Get transaction history</div>
+									<div class="api-endpoint__description">Returns recent confirmed transactions for an address.</div>
 								</div>
+								<p>Query Parameters:</p>
+								<ul>
+									<li><strong>limit:</strong> max 100 (default 10)</li>
+									<li><strong>type:</strong> optional filter (TRX, TRC20, TRC10)</li>
+								</ul>
 								<div class="code-block">
 									<pre><code>curl https://api.tronwatch.app/v1/transactions/TDx7Ab...9KJ?limit=10&type=TRC20</code></pre>
+								</div>
+								<div class="code-block">
+									<pre><code>{
+  "txID": "a7b1...ff90",
+  "timestamp": 1729872390000,
+  "type": "TRC20",
+  "token": "USDT",
+  "amount": "25.00",
+  "from": "TDx7Ab...9KJ",
+  "to": "TXY9eP...8nM"
+}</code></pre>
 								</div>
 								<div class="api-endpoint">
 									<div class="api-endpoint__method">POST</div>
 									<div class="api-endpoint__path">/send</div>
-									<div class="api-endpoint__description">Send transaction</div>
+									<div class="api-endpoint__description">Broadcasts a signed transaction to the TRON blockchain.</div>
 								</div>
+								<div class="doc-note doc-note--blue">
+									This call requires private key to sign and must only be used in secure backend environments.
+								</div>
+								<p>Request:</p>
 								<div class="code-block">
 									<pre><code>{
   "from": "TDx7Ab...9KJ",
@@ -474,9 +495,14 @@
   "privateKey": "PRIVATE_KEY"
 }</code></pre>
 								</div>
-								<div class="doc-note doc-note--blue">
-									<strong>Note:</strong> The API does not store or log private keys. This call should only be used in trusted backend environments.
+								<p>Response:</p>
+								<div class="code-block">
+									<pre><code>{
+  "txID": "93f2a7f...b8c7",
+  "status": "broadcasted"
+}</code></pre>
 								</div>
+								<p>TronWatch does not store or log private keys.</p>
 							</div>
 
 
@@ -485,22 +511,59 @@
 								<div class="api-endpoint">
 									<div class="api-endpoint__method">GET</div>
 									<div class="api-endpoint__path">/resources/{address}</div>
-									<div class="api-endpoint__description">Returns current bandwidth and energy levels.</div>
+									<div class="api-endpoint__description">Returns available bandwidth and energy for a wallet.</div>
+								</div>
+								<p>Example Response:</p>
+								<div class="code-block">
+									<pre><code>{
+  "address": "TDx7Ab...9KJ",
+  "bandwidth": 5500,
+  "energy": 130000
+}</code></pre>
 								</div>
 								<div class="api-endpoint">
 									<div class="api-endpoint__method">GET</div>
 									<div class="api-endpoint__path">/tokens/{contract_address}</div>
-									<div class="api-endpoint__description">Retrieves metadata about a TRC-20 or TRC-10 token.</div>
+									<div class="api-endpoint__description">Fetches metadata for a TRC-10 or TRC-20 token.</div>
+								</div>
+								<p>Example Response (TRC-20):</p>
+								<div class="code-block">
+									<pre><code>{
+  "name": "Tether USD",
+  "symbol": "USDT",
+  "type": "TRC20",
+  "decimals": 6,
+  "totalSupply": "5000000000000000",
+  "issuer": "TXYZ..."
+}</code></pre>
 								</div>
 								<div class="api-endpoint">
 									<div class="api-endpoint__method">GET</div>
 									<div class="api-endpoint__path">/nfts/{address}</div>
-									<div class="api-endpoint__description">Fetches NFTs held by a wallet, including collection name, token ID, and image URL.</div>
+									<div class="api-endpoint__description">Fetches NFTs owned by a wallet. Compatible with TRC-721 and custom NFT contracts.</div>
+								</div>
+								<p>Example Response:</p>
+								<div class="code-block">
+									<pre><code>{
+    "collection": "TronBeasts",
+    "tokenId": "00123",
+    "imageUrl": "https://ipfs.io/ipfs/Qmb...abc",
+    "contract": "TABC..."
+  }</code></pre>
 								</div>
 								<div class="api-endpoint">
 									<div class="api-endpoint__method">GET</div>
 									<div class="api-endpoint__path">/status</div>
-									<div class="api-endpoint__description">Checks API health and synchronization status with the TRON blockchain.</div>
+									<div class="api-endpoint__description">Check API health and TRON node sync state.</div>
+								</div>
+								<p>Example:</p>
+								<div class="code-block">
+									<pre><code>{
+  "api": "online",
+  "lastBlock": 68421567,
+  "synced": true,
+  "uptime": "99.99%"
+}</code></pre>
 								</div>
 							</div>
 						</div>
@@ -595,7 +658,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250731183037"></script>
+	<script src="js/app.min.js?_v=20250731190326"></script>
 </body>
 
 </html>
