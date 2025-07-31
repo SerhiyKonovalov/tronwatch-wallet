@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300; 400;500;600;700&display=swap');
 * {
   padding: 0;
   margin: 0;
@@ -1725,6 +1724,9 @@ li:not(:last-child) {
   white-space: nowrap;
   transition: all var(--transition-fast)
 }
+[data-theme=dark] .doc-nav__item {
+  border: 1px solid rgba(255,255,255,.08)
+}
 .doc-nav__item--active,
 .doc-nav__item:hover {
   color: var(--color-text-primary);
@@ -1756,9 +1758,28 @@ li:not(:last-child) {
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255,255,255,.1)
 }
+.doc-article p {
+  margin-bottom: 0
+}
+.doc-article p:not(:last-child) {
+  margin-bottom: 1rem
+}
 .doc-article h3 {
   color: var(--color-primary);
   margin-bottom: var(--spacing-md)
+}
+.doc-article ul li {
+  margin-bottom: var(--spacing-xs);
+  position: relative
+}
+.doc-article ul li::before {
+  content: "•";
+  position: absolute;
+  left: -17px;
+  top: -1px;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 1rem
 }
 .doc-note {
   background-color: rgba(231,76,60,.1);
@@ -1766,6 +1787,10 @@ li:not(:last-child) {
   padding: var(--spacing-md);
   margin: var(--spacing-md) 0;
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0
+}
+.doc-note--blue {
+  background-color: rgba(60,134,231,.1);
+  border-left: 4px solid rgba(60,134,231,.7)
 }
 .code-block {
   background-color: var(--color-bg-primary);
@@ -1782,6 +1807,7 @@ li:not(:last-child) {
 }
 .api-endpoint {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--spacing-md);
   padding: var(--spacing-md);
@@ -2113,7 +2139,17 @@ li:not(:last-child) {
   margin-bottom: var(--spacing-md)
 }
 .legal-section li {
-  margin-bottom: var(--spacing-xs)
+  margin-bottom: var(--spacing-xs);
+  position: relative
+}
+.legal-section li::before {
+  content: "•";
+  position: absolute;
+  left: -17px;
+  top: -1px;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 1rem
 }
 .code-copy-btn--small {
   padding: var(--spacing-xs);
@@ -2167,7 +2203,7 @@ li:not(:last-child) {
 }
 .footer__content {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2.5fr 1fr 1fr 1fr;
   gap: var(--spacing-xl);
   margin-bottom: var(--spacing-xl)
 }
@@ -2371,7 +2407,6 @@ li:not(:last-child) {
     text-align: center
   }
   .api-endpoint {
-    flex-direction: column;
     align-items: flex-start;
     gap: var(--spacing-sm)
   }
@@ -2574,6 +2609,9 @@ li:not(:last-child) {
   .doc-nav__item {
     padding: var(--spacing-sm) 12px
   }
+  .doc-article {
+    padding: var(--spacing-lg) var(--spacing-md)
+  }
   .faq__categories {
     gap: var(--spacing-sm)
   }
@@ -2587,6 +2625,12 @@ li:not(:last-child) {
   .form__select,
   .form__textarea {
     padding: 14px!important
+  }
+  .legal-section {
+    padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg) var(--spacing-md)
+  }
+  .legal-section h2 {
+    margin-bottom: var(--spacing-md)
   }
   .footer {
     padding: var(--spacing-2xl) 0 var(--spacing-lg)
